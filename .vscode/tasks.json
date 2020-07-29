@@ -24,10 +24,10 @@
                 "reveal": "always"
             },
             "problemMatcher": [],
-            "dependsOn": [ "Compile Plugin" ]
+            "dependsOn": [ "--" ]
         },
         {
-            "label": "Compile Plugin",
+            "label": "--",
             "type": "shell",
             "group": "build",
             "command": "echo Compile Plugin",
@@ -44,15 +44,56 @@
                 "reveal": "always"
             },
             "problemMatcher": [],
-            "dependsOn": [ "Version" ]
+            "dependsOn": [ "-" ]
         },
         {
-            "label": "Version",
+            "label": "-",
             "type": "shell",
             "group": "build",
             "command": "echo Version",
             "windows": {
                 "command": "sh .\\plugincompile\\compile_plugin.sh ${input:ver_inc}",
+                "options": {
+                    "shell": {
+                        "executable": "cmd.exe",
+                        "args": [ "/c"  ]
+                    }
+                }
+            },
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Sign QSD Plugin",
+            "type": "shell",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "command": "echo Update Signed QSD Plugin",
+            "windows": {
+                "command": ".\\plugincompile\\copy_plugin.cmd ${workspaceFolder} ${workspaceFolderBasename}",
+                "options": {
+                    "shell": {
+                        "executable": "cmd.exe",
+                        "args": [ "/c"  ]
+                    }
+                }
+            },
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": [],
+            "dependsOn": [ "---" ]
+        },
+        {
+            "label": "---",
+            "type": "shell",
+            "command": "echo Sign Plugin",
+            "windows": {
+                "command": ".\\pluginsigning\\plugin_tool.exe sign ${workspaceFolder}\\${workspaceFolderBasename}.qplug ${workspaceFolder}\\${workspaceFolderBasename}.qplug .\\pluginsigning\\plugin_signing_key.pem \"next scrutiny doses receives\"",
                 "options": {
                     "shell": {
                         "executable": "cmd.exe",
@@ -70,8 +111,16 @@
         {
             "id": "ver_inc",
             "description": "Version Inc:",
-            "default": "ver_dev",
-            "type": "promptString"
+            "type": "pickString",
+            "options": [
+                "ver_maj",
+                "ver_min",
+                "ver_fix",
+                "ver_dev",
+                "ver_none",
+                "CANCEL"
+            ],
+            "default": "ver_dev"
         },
     ]
 }
