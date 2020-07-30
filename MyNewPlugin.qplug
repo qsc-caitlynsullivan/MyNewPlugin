@@ -1,11 +1,11 @@
--- Base Plugin
+-- An Example
 -- by QSC
 -- Month 20YY
 
 PluginInfo = {
-    Name = "Base Plugin~Base Plugin",
+    Name = "My New Plugin~An Example",
     Version = "0.0.0.0",
-    Id = "<guid>",
+    Id = "2cc31f27-860b-4e87-b874-61c9268ebca7",
     Description = "Compiled from Visual Studio Code",
     ShowDebug = true
 }
@@ -15,7 +15,7 @@ function GetColor(props)
 end
 
 function GetPrettyName(props)
-  return "Base Plugin " .. PluginInfo.Version
+  return "An Example " .. PluginInfo.Version
 end
 
 function GetPages()

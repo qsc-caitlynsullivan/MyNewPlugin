@@ -1,4 +1,4 @@
--- Base Plugin
+-- An Example
 -- by QSC
 -- Month 20YY
 
@@ -9,7 +9,7 @@ function GetColor(props)
 end
 
 function GetPrettyName(props)
-  return "Base Plugin " .. PluginInfo.Version
+  return "An Example " .. PluginInfo.Version
 end
 
 function GetPages()
