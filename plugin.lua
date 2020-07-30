@@ -9,7 +9,7 @@ function GetColor(props)
 end
 
 function GetPrettyName(props)
-  return "An Example " .. PluginInfo.Version
+  return "An Example with changes " .. PluginInfo.Version
 end
 
 function GetPages()
